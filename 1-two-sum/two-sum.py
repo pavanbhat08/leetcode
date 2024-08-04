@@ -1,11 +1,11 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        for i in range(0,len(nums)):
-            j=-1
-            try:
-                j = nums.index(target - nums[i],i+1)
-            except:
-                pass
-            if(j!=-1):
-                return [i,j]
+        num_to_index = {}
+        for index, num in enumerate(nums):
+            complement = target - num
+            if complement in num_to_index:                
+                return [num_to_index[complement], index]
+            num_to_index[num] = index
+        return []
+
         
